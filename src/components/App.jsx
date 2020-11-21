@@ -1,6 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
+import "../App.css";
+import { Button } from "react-bootstrap";
 
-const App = () => {
+class App extends Component{
+    render(){
     return (
         <div className="App">
             <div className="title">
@@ -12,15 +15,17 @@ const App = () => {
                     placeholder="I have to..."
                     className="form-control"
                     />
-                    <button
-                    className="btn tbn-success"
+                    <Button
+                    className="btn"
+                    variant="outline-success"
                     type="button">
                         Add reminder
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>
     )
+}
 }
 
 export default App;
