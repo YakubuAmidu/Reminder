@@ -1,9 +1,21 @@
 import React, { Component } from "react";
 import "../App.css";
 import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { addReminder } from "../Actions";
 
 class App extends Component{
-   
+   constructor(props){
+       super(props);
+       this.state = {
+           text: " "
+       }
+   }
+
+   addReminder(){
+       console.log("this", this);
+   }
 
     render(){
     return (
@@ -16,11 +28,13 @@ class App extends Component{
                     <input
                     placeholder="I have to..."
                     className="form-control"
+                    onChange={(Event) => this.setState({ text: Event.target.value })}
                     />
                     <Button
                     className="btn"
                     variant="outline-success"
                     type="button"
+                    onClick={() => this.addReminder()}
                     >
                         Add reminder
                     </Button>
@@ -31,4 +45,8 @@ class App extends Component{
 }
 }
 
-export default App;
+function mapDispatchStateToProps(dispatch){
+ return bindActionCreators({addReminder}, dispatch);
+}
+
+export default connect(null, mapDispatchStateToProps)(App);
