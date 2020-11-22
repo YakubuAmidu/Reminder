@@ -45,5 +45,11 @@ class App extends Component{
 }
 }
 
+function mapStateToProps(state){
+    return {
+        reminders: state
+    }
+}
 
-export default connect(null, { addReminder })(App);
+
+export default connect(mapStateToProps, { addReminder })(App);
