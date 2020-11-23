@@ -13,9 +13,25 @@ class App extends Component{
    }
 
    addReminder(){
-       console.log("this", this);
        this.props.addReminder(this.state.text);
    }
+
+  renderReminder(){
+      const { reminders } = this.props;
+      return (
+          <ul className="list-group col-sm-4">
+              {
+                  reminders.map(reminder => {
+                      return (
+                      <li key={reminder.id} className="list-group-item">
+                          <div>{reminder.text}</div>
+                      </li>
+                      )
+                  })
+              }
+          </ul>
+      )
+  }
 
     render(){
     return (
@@ -30,6 +46,7 @@ class App extends Component{
                     className="form-control"
                     onChange={(Event) => this.setState({ text: Event.target.value })}
                     />
+                    </div>
                     <Button
                     className="btn"
                     variant="outline-success"
@@ -39,7 +56,7 @@ class App extends Component{
                         Add reminder
                     </Button>
                 </div>
-            </div>
+                {this.renderReminder()}
         </div>
     )
 }
