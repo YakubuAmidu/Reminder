@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import "../App.css";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { addReminder } from "../Actions";
-import { deleteReminder } from "../Actions";
+import { addReminder, deleteReminder } from "../Actions";
 
 class App extends Component{
    constructor(props){
@@ -18,8 +16,7 @@ class App extends Component{
    }
 
    deleteReminder(id){
-     console.log("deleting in application", id);
-     console.log("this.props", this.props);
+     this.props.deleteReminder(id);
    }
 
   renderReminder(){
@@ -31,7 +28,8 @@ class App extends Component{
                       return (
                       <li key={reminder.id} className="list-group-item">
                           <div className="list-item">{reminder.text}</div>
-                          <div className="list-item delete-button" onClick={() => this.deleteReminder(reminder.id)}>
+                          <div className="list-item delete-button" 
+                          onClick={() => this.deleteReminder(reminder.id)}>
                               &#x2715;
                           </div>
                       </li>
@@ -78,4 +76,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, { addReminder })(App);
+export default connect(mapStateToProps, { addReminder, deleteReminder })(App);
