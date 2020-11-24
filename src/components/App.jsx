@@ -13,7 +13,8 @@ class App extends Component{
    }
 
    addReminder(){
-       this.props.addReminder(this.state.text);
+       console.log("this.state.duedate", this.state.dueDate);
+       this.props.addReminder(this.state.text, this.state.dueDate);
    }
 
    deleteReminder(id){
@@ -28,7 +29,10 @@ class App extends Component{
                   reminders.map(reminder => {
                       return (
                       <li key={reminder.id} className="list-group-item">
-                          <div className="list-item">{reminder.text}</div>
+                          <div className="list-item">
+                              <div>{reminder.text}</div>
+                              <div><em>{reminder.dueDate}</em></div>
+                              </div>
                           <div className="list-item delete-button" 
                           onClick={() => this.deleteReminder(reminder.id)}>
                               &#x2715;
