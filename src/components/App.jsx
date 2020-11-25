@@ -13,8 +13,8 @@ class App extends Component{
    }
 
    addReminder(){
-       console.log("this.state.duedate", this.state.dueDate);
        this.props.addReminder(this.state.text, this.state.dueDate);
+
    }
 
    deleteReminder(id){
@@ -33,7 +33,7 @@ class App extends Component{
                               <div>{reminder.text}</div>
                               <div><em>{moment(new Date(reminder.dueDate)).fromNow()}</em></div>
                               </div>
-                          <div className="list-item delete-button" 
+                          <div className="list-item delete-button"
                           onClick={() => this.deleteReminder(reminder.id)}>
                               &#x2715;
                           </div>
@@ -73,7 +73,7 @@ class App extends Component{
                     </button>
                 </div>
                 {this.renderReminder()}
-                <div className="btn btn-outline-danger" 
+                <div className="btn btn-outline-danger"
                 onClick={() => this.props.clearReminders()}>
                    Clear Reminders
                 </div>

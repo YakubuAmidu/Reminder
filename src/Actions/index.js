@@ -6,8 +6,6 @@ export const addReminder = (text, dueDate) => {
         text,
         dueDate
     }
-
-    console.log("action in addReminder", action);
     return action;
 }
 
@@ -16,8 +14,6 @@ export const deleteReminder = (id) => {
         type: DELETE_REMINDER,
         id
     }
-
-    console.log("action in deleteReminder", action);
     return action;
 }
 
